@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Jake's additions STARTS -->
+    <title>Space Coffee</title>
+
+    <!-- Using Parallax as a background - Kris-->
+    <style>
+        #parallax {
+            position:absolute;
+            z-index: -1;
+            top:0;
+            left:0;
+        }
+    </style>
+    <!--CSS positioning - Matt-->
+    <style>
+            .centered { 
+                position: absolute;
+                left: 500px;
+            }
+            .help {
+                position: absolute;
+                left: 1250px;
+                top: 430px;
+            }
+            .contract{
+                position: absolute;
+                left: 450px;
+                top: 440px;
+            }
+    </style>
+    <canvas id="parallax"></canvas>
+    <script src="./src/parallax.js"></script>
+
+    <link rel="stylesheet" href="./style.css" />
+    <!-- ENDS -->
+</head>
+
+<body>
+    <img id="help" hidden src="assets/imgs/HoloHelpWanted.png" class="help" width=200px>
+    <img id="contract" hidden src="assets/imgs/Coffee_Beans_Holo.png" class="contract" width=300px>
+    <div class="centered">
+        <h1 style="font-size:30px">Space Coffee</h1>
+        <table id="values">
+            <tbody>
+                <tr id="creditsRow">
+                    <td id="credits">Credits: 0</td>
+                </tr>
+                <tr id="coffeRow">
+                    <td id="coffeeBeans">Coffee Beans: 0</td>
+                    <td id="coffee">Coffee: 0</td>
+                </tr>
+                <tr hidden id="cupcakesRow">
+                    <td id="flour">Flour: 0</td>
+                    <td id="cupcakes">Cupcakes: 0</td>
+                </tr>
+                <tr id="baristasRow">
+                    <td hidden id="brewBaristas">Brew Baristas: 0/1</td>
+                    <td hidden id="sellBaristas">Sell Baristas: 0/0</td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="basicButtons">
+            <tbody>
+                <tr>
+                    <button id="clicker" onclick="borrowCredits()">Borrow Credits</button>
+                    <button id="buyBeans" onclick="buyBeans()">Buy Beans</button>
+                    <button id="makeCoffee" onclick="makeCoffee()">Make Coffee</button>
+                    <button id="sellCoffee" onclick="sellCoffee()">Sell Coffee</button>
+                    <button hidden id="payoffDebt" onclick="payDebt()">Pay Debt: 0</button>
+                    <button hidden id="buyFlour" onclick="buyFlour()">Buy Flour</button>
+                    <button hidden id="makeCupcakes" onclick="makeCupcakes()">Make Cupcakes</button>
+                    <button hidden id="sellCupcakes" onclick="sellCupcakes()">Sell Cupcakes</button>
+                </tr>
+            </tbody>
+        </table>
+        <p></p>
+        <table id="workers">
+            <tbody>
+                <tr id="baristasButtonRow">
+                    <td style="display:none;" id="baristasText"> Brew Baristas turn beans into coffee.</td>
+                    <button hidden id="brewBaristaButton" onclick="buyBrewBarista()">Brew Barista [10 credits]</button>
+                    <button hidden id="sellBaristaButton" onclick="buySellBarista()">Sell Barista [25 credits]</button>
+                    <button hidden id="largerStoreButton" onclick="largerStore()">Larger Store 1 [100 credits]</button>
+                </tr>
+            </tbody>
+        </table>
+        <p></p>
+        <p></p>
+        <table id="contracts">
+            <tbody>
+                <tr id="beansContractRow">
+                    <button hidden id="beansContract" onclick="beansContract()">Beans Contract [500 credits]</button>
+                    <button hidden id="beansContractToggle" onclick="toggleBeansContract()">Beans Contract: Currently
+                        Off</button>
+                    <td style="display:none;" id="beansContractText"> Beans Contract turns 5% of credits into beans every 15
+                        seconds </td>
+                </tr>
+            </tbody>
+        </table>
+        <p></p>
+        <table id="expandedMenu">
+            <tbody>
+                <tr id="cupcakeContractRow">
+                    <button hidden id="surpass" onclick="surpass()">Buy Cupcake Recipe [1000 credits]</button>
+                    <button hidden id="teachSellBaristas" onclick="surpass2()">Teach Sell Baristas to Sell Cupcakes [1000 credits]</button>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script src="./src/upgrades.js"></script>
+    <script src="./src/workers.js"></script>
+    <script src="./src/contracts.js"></script>
+    <script src="./src/main.js"></script>
+    <!--<button id="buttonMaker" onclick="makeButton()">Button Maker</button>-->
+
+    <!-- Jake's additions STARTS -->
+    <!---<canvas id="parallax"></canvas>
+    <script src="./src/parallax.js"></script>-->
+    <!-- ENDS -->
+
+</body>
+</html>
