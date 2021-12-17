@@ -4,33 +4,7 @@
 <head>
     <!-- Jake's additions STARTS -->
     <title>Space Coffee</title>
-
-    <!-- Using Parallax as a background - Kris-->
-    <style>
-        #parallax {
-            position:absolute;
-            z-index: -1;
-            top:0;
-            left:0;
-        }
-    </style>
-    <!--CSS positioning - Matt-->
-    <style>
-            .centered { 
-                position: absolute;
-                left: 500px;
-            }
-            .help {
-                position: absolute;
-                left: 1250px;
-                top: 430px;
-            }
-            .contract{
-                position: absolute;
-                left: 450px;
-                top: 440px;
-            }
-    </style>
+	<link rel="stylesheet" type="text/css" href="style.css" />
     <canvas id="parallax"></canvas>
     <script src="./src/parallax.js"></script>
 
@@ -39,10 +13,18 @@
 </head>
 
 <body>
+    <strong class="title" style="font-size:30px">Space Coffee</strong>
     <img id="help" hidden src="assets/imgs/HoloHelpWanted.png" class="help" width=200px>
     <img id="contract" hidden src="assets/imgs/Coffee_Beans_Holo.png" class="contract" width=300px>
+    <div class="selectors" id="selectors">
+        <div id="selectCafe" class="paneSelector selected" onclick="paneSelect('cafe')">Cafe</div>
+        <div id="selectManagement" class="paneSelector" onclick="paneSelect('management')">Management</div>
+        <div id="selectContracts" class="paneSelector" onclick="paneSelect('contracts')">Contracts</div>
+        <div style="clear:both;"></div>
+    </div>
+
+<!---
     <div class="centered">
-        <h1 style="font-size:30px">Space Coffee</h1>
         <table id="values">
             <tbody>
                 <tr id="creditsRow">
@@ -110,6 +92,7 @@
             </tbody>
         </table>
     </div>
+-->
     <script src="./src/upgrades.js"></script>
     <script src="./src/workers.js"></script>
     <script src="./src/contracts.js"></script>

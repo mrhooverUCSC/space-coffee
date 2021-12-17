@@ -5,17 +5,14 @@
 body {
     background-color: black;
 }
-
 h1 {
     color: yellow;
     font-family: GuardingTheAerodrome;
 }
-
 tr {
     color: white;
     font-family: GuardingTheAerodrome;
 }
-
 button {
     background-color: darkcyan;
     color: black;
@@ -25,4 +22,71 @@ button {
 #canvas1 {
     width: 1920px;
     height: 1280px;
+}
+#parallax {
+    position:absolute;
+    z-index: -1;
+    top:0;
+    left:0;
+}
+
+.title { 
+    position: absolute;
+    color: yellow;
+    font-family: GuardingTheAerodrome;
+    left: 450px;
+    top: 20px;
+    width: 800px;
+}
+.centered { 
+    position: absolute;
+    left: 500px;
+    top: 0px;
+    width: 800px;
+}
+.help {
+    position: absolute;
+    left: 1250px;
+    top: 430px;
+}
+.contract{
+    position: absolute;
+    left: 450px;
+    top: 440px;
+}
+
+/* Styles for the Panel Buttons.
+   Positions them and sets the style for unselected/selected versions */
+.selectors{
+    position: absolute;
+    left: 700px;
+    top: 5px;
+    width: 500px;
+}
+.paneSelector{
+    width:30%;
+	float:left;
+    text-align:center;
+    margin:1em 0;
+    line-height:2em;
+    border:2px solid black;
+    background-color:#fff;
+}
+.paneSelector:hover{
+    text-decoration:underline;
+    text-shadow: none;
+    cursor:pointer;
+}
+.selected{
+	border-bottom:none;
+	background:none;
+	color:rgb(161, 153, 153);
+    background-color:#fff;
+	text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
+}
+.selected:hover{
+	text-decoration:none;
+	cursor:auto;
+	background:none;
+	text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
 }
