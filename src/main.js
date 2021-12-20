@@ -1,14 +1,18 @@
 let credits = 10;
 let debt = 0;
 let coffeeBeans = 0;
-let coffee = 0;
+let coffee = 10;
 let flour = 0;
 let butter = 0;
 let sugar = 0;
 let chocolate = 0;
 let eggs = 0;
+let cinnamon = 0;
 let cupcakes = 0;
 let croissants = 0;
+let coffeeCake = 0;
+let timer = 0;
+let snacks = Array("cupcakes", "croissants", "coffeeCake", "none");
 
 function borrowCredits(){
     increaseCredits(1);
@@ -29,52 +33,28 @@ function payDebt(){
         document.getElementById("payoffDebt").innerHTML = "Pay Debt: " + debt;    
     }
 }
-function buyBeans(){
-    if(credits >= 1){
-        increaseCredits(-1);
-        increaseBeans(1);
-    }
-}
 function makeCoffee(){
     if(coffeeBeans >= 1){
         increaseBeans(-1);
         increaseCoffee(1);
     }
 }
+function buyIngredient(name){
+    if(credits >= 1){
+        increaseCredits(-1);
+        if(name == "beans"){increaseBeans(1);}
+        else if(name == "flour"){increaseFlour(1);}
+        else if(name == "butter"){increaseButter(1);}
+        else if(name == "sugar"){increaseSugar(1);}
+        else if(name == "chocolate"){increaseChocolate(1);}
+        else if(name == "eggs"){increaseEggs(1);}
+        else if(name == "cinnamon"){increaseCinnamon(1);}
+    }
+}
 function sellCoffee(){
     if(coffee >= 1){
         increaseCoffee(-1);
-        increaseCredits(5);
-    }
-}
-function buyFlour(){
-    if(credits >= 1){
-        increaseCredits(-1);
-        increaseFlour(1);
-    }
-}
-function buyButter(){
-    if(credits >= 1){
-        increaseCredits(-1);
-        increaseButter(1);
-    }
-}
-function buySugar(){
-    if(credits >= 1){
-        increaseCredits(-1);
-        increaseSugar(1);
-    }
-}
-function buyChocolate(){
-    if(credits >= 1){
-        increaseCredits(-1);
-        increaseChocolate(1);
-    }
-}
-function buyEggs(){
-    if(credits >= 1){
-        increaseCredits(-1);
-        increaseEggs(1);
+        increaseCredits(3);
     }
 }
 function makeCupcakes(){
@@ -93,16 +73,31 @@ function makeCroissant(){
         increaseCroissants(1);
     }
 }
+function makeCoffeeCake(){
+    if(flour >= 2 && eggs >= 1 && sugar >= 1 && cinnamon >= 1){
+        increaseFlour(-2);
+        increaseCinnamon(-1);
+        increaseEggs(-1);
+        increaseSugar(-1);
+        increaseCoffeeCake(1);
+    }
+}
 function sellCupcakes(){
     if(cupcakes >= 1){
         increaseCupcakes(-1);
-        increaseCredits(10);
+        increaseCredits(8);
     }
 }
 function sellCroissants(){
     if(croissants >= 1){
         increaseCroissants(-1);
-        increaseCredits(10);
+        increaseCredits(8);
+    }
+}
+function sellCoffeeCake(){
+    if(coffeeCake >= 1){
+        increaseCoffeeCake(-1);
+        increaseCredits(8);
     }
 }
 
@@ -150,6 +145,10 @@ function increaseEggs(increase){
     eggs += increase;
     document.getElementById("eggs").innerHTML = "Eggs: " + Math.floor(eggs);
 }
+function increaseCinnamon(increase){
+    cinnamon += increase;
+    document.getElementById("cinnamon").innerHTML = "Cinnamon: " + Math.floor(cinnamon);
+}
 function increaseCupcakes(increase){
     cupcakes += increase;
     document.getElementById("cupcakes").innerHTML = "Cupcakes: " + Math.floor(cupcakes);
@@ -157,6 +156,10 @@ function increaseCupcakes(increase){
 function increaseCroissants(increase){
     croissants += increase;
     document.getElementById("croissants").innerHTML = "Croissants: " + Math.floor(croissants);
+}
+function increaseCoffeeCake(increase){
+    coffeeCake += increase;
+    document.getElementById("coffeeCake").innerHTML = "Coffee Cake: " + Math.floor(coffeeCake);
 }
 
 
@@ -215,4 +218,11 @@ window.setInterval(function(){ //tick every .1 seconds
     contractsTick();
     upgradesCheck();
     */
+    timer++;
+    if(timer % 10 == 0){
+        baristasTick();
+    }
+    if(timer >= 60){
+        timer = 0;
+    }
 }, 100);

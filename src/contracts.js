@@ -2,7 +2,6 @@ let beansContractCurrently = false;
 let currentContractUpgrade = 0;
 let contractRate = 0.05;
 let amountToUpgrade = 0.03;
-let timer = 0;
 
 function beansContract(){
     var contractCost = Math.floor(500 + (100 * (currentContractUpgrade)));  
@@ -30,12 +29,12 @@ function toggleBeansContract(){
 }
 
 function contractsTick(){
-    timer += .1; 
+    /*timer += .1; 
     if(timer >= 15){
         if(beansContractCurrently){
             increaseBeans(Math.floor(contractRate * credits));
             increaseCredits(-Math.floor(contractRate * credits));
         }
         timer = 0;
-    }
+    }*/
 }

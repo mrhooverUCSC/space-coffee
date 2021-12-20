@@ -24,7 +24,7 @@
         <div style="clear:both;"></div>
     </div>
     <div class="content" style="display:block" id="cafePane">
-        <table style="width:650px">
+        <table style="width:800px">
             <tbody>
                 <tr id="creditsRow">
                     <td id="credits">Credits: 10</td>
@@ -33,47 +33,73 @@
                 <tr id="ingredientsRow">
                     <td id="coffeeBeans">Coffee Beans: 0</td>
                     <td id="flour">Flour: 0</td>
-                    <td id="butter">Butter: 0</td>
-                    <td id="sugar">Sugar: 0</td>
                     <td id="chocolate">Chocolate: 0</td>
+                    <td id="sugar">Sugar: 0</td>
                     <td id="eggs">Eggs: 0</td>
+                    <td id="cinnamon">Cinnamon: 0</td>
+                    <td id="butter">Butter: 0</td>
                 </tr>
                 <tr><td>Products</td></tr>
                 <tr id="productsRow">
                     <td id="coffee">Coffee: 0</td>
                     <td id="cupcakes">Cupcakes: 0</td>
                     <td id="croissants">Croissants: 0</td>
+                    <td id="coffeeCake">Coffee Cake: 0</td>
                 </tr>
             </tbody>
         </table>
         <table>
             <tbody>
                 <tr><td>Actions</td></tr>
-                <tr id="coffeeButtonsRow">
-                    <td><button id="buyBeans" onclick="buyBeans()">Buy Beans</button></td>
-                    <td><button id="makeCoffee" onclick="makeCoffee()">Make Coffee</button></td>
-                    <td><button id="sellCoffee" onclick="sellCoffee()">Sell Coffee</button></td>
+                <tr id="buyRow">
+                    <td>Buy:</td>
+                    <td><button id="buyBeans" onclick="buyIngredient('beans')">Beans</button></td>
+                    <td><button id="buyFlour" onclick="buyIngredient('flour')">Flour</button></td>
+                    <td><button id="buyChocolate" onclick="buyIngredient('chocolate')">Chocolate</button></td>
+                    <td><button id="buySugar" onclick="buyIngredient('sugar')">Sugar</button></td>
+                    <td><button id="buyEggs" onclick="buyIngredient('eggs')">Eggs</button></td>
+                    <td><button id="buyCinnamon" onclick="buyIngredient('cinnamon')">Cinnamon</button></td>
+                    <td><button id="buyButter" onclick="buyIngredient('butter')">Butter</button></td>
                 </tr>
-                <tr id="ingedirentButtonsRow">
-                    <td><button id="buyFlour" onclick="buyFlour()">Buy Flour</button></td>
-                    <td><button id="buyButter" onclick="buyButter()">Buy Butter</button></td>
-                    <td><button id="buySugar" onclick="buySugar()">Buy Sugar</button></td>
-                    <td><button id="buyChocolate" onclick="buyChocolate()">Buy Chocolate</button></td>
-                    <td><button id="buyEggs" onclick="buyEggs()">Buy Eggs</button></td>
+                <tr id="makeRow">
+                    <td>Make:</td>
+                    <td><button id="makeCoffee" onclick="makeCoffee()">Coffee</button></td>
+                    <td><button id="makeCupcakes" onclick="makeCupcakes()">Cupcakes</button></td>
+                    <td><button id="makeCroissant" onclick="makeCroissant()">Croissant</button></td>
+                    <td><button id="makeCoffeeCake" onclick="makeCoffeeCake()">Coffee Cake </button></td>
                 </tr>
-                <tr id="makeProductsRow">
-                    <td><button id="makeCupcakes" onclick="makeCupcakes()">Make Cupcakes</button></td>
-                    <td><button id="makeCroissant" onclick="makeCroissant()">Make Croissant</button></td>
-                </tr>
-                <tr id="sellProductsRow">
-                    <td><button id="sellCupcakes" onclick="sellCupcakes()">Sell Cupcakes</button></td>
-                    <td><button id="sellCroissants" onclick="sellCroissants()">Sell Croissants</button></td>
+                <tr id="sellRow">
+                    <td>Sell:</td>
+                    <td><button id="sellCoffee" onclick="sellCoffee()">Coffee</button></td>
+                    <td><button id="sellCupcakes" onclick="sellCupcakes()">Cupcakes</button></td>
+                    <td><button id="sellCroissants" onclick="sellCroissants()">Croissants</button></td>
+                    <td><button id="sellCoffeeCake" onclick="sellCoffeeCake()">Coffee Cake</button></td>
                 </tr>
             </tbody>
         </table>
     </div>
     <div class="content" style="display:none" id="managementPane">
-        <p style="color:white">1</p>
+        <table id="workers" style="width:800px">
+            <tbody>
+                <tr id="baristasHireRow">
+                    <td> Baristas both have an initial cost and a 1 credit wage paid every time they perform an action.</td>
+                    <td><p id="totalBaristas">Baristas: 0/3</p></td>
+                    <td><button id="buyBarista" onclick="buyBarista()">Buy Barista: 10 credits</button></td>
+                </tr>
+                <tr id="sellBaristasRow">
+                    <td> Sell Baristas sell coffee and snacks to customers.</td>
+                    <td><p id="sellBaristas">Sell Baristas: 0</p></td>
+                    <td><button id="allocateSell" onclick="allocateSell()">Add Sell Barisata</button></td>
+                    <td><button id="removeSell" onclick="removeSell()">Remove Sell Barista</button></td>
+                </tr>
+                <tr id="brewBaristasRow">
+                    <td> Brew Baristas make coffee beans into coffee.</td>
+                    <td><p id="brewBaristas">Brew Baristas: 0</p></td>
+                    <td><button id="allocateBrew" onclick="allocateBrew()">Add Brew Barisata</button></td>
+                    <td><button id="removeBrew" onclick="removeBrew()">Remove Brew Barista</button></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <div class="content" style="display:none"  id="contractPane">
         <p style="color:white">2</p>
@@ -81,53 +107,11 @@
     <div class="content" style="display:none"  id="recipesPane">
         <p style="color:white">Cupcake Recipe: 2 Flour, 2 Eggs, 1 Chocolate</p>
         <p style="color:white">Croissant Recipe: 2 Flour, 2 Butter, 1 Sugar</p>
+        <p style="color:white">Coffee Cake Recipe: 2 Flour, 1 Cinnamon, 1 Egg, 1 Sugar</p>
+        <p style="color:white">Coffee Cake</p>
     </div>
 <!---
     <div class="centered">
-        <table id="values">
-            <tbody>
-                <tr id="creditsRow">
-                    <td id="credits">Credits: 0</td>
-                </tr>
-                <tr id="coffeRow">
-                    <td id="coffeeBeans">Coffee Beans: 0</td>
-                    <td id="coffee">Coffee: 0</td>
-                </tr>
-                <tr hidden id="cupcakesRow">
-                    <td id="flour">Flour: 0</td>
-                    <td id="cupcakes">Cupcakes: 0</td>
-                </tr>
-                <tr id="baristasRow">
-                    <td hidden id="brewBaristas">Brew Baristas: 0/1</td>
-                    <td hidden id="sellBaristas">Sell Baristas: 0/0</td>
-                </tr>
-            </tbody>
-        </table>
-        <table id="basicButtons">
-            <tbody>
-                <tr>
-                    <button id="clicker" onclick="borrowCredits()">Borrow Credits</button>
-                    <button id="buyBeans" onclick="buyBeans()">Buy Beans</button>
-                    <button id="makeCoffee" onclick="makeCoffee()">Make Coffee</button>
-                    <button id="sellCoffee" onclick="sellCoffee()">Sell Coffee</button>
-                    <button hidden id="payoffDebt" onclick="payDebt()">Pay Debt: 0</button>
-                    <button hidden id="buyFlour" onclick="buyFlour()">Buy Flour</button>
-                    <button hidden id="makeCupcakes" onclick="makeCupcakes()">Make Cupcakes</button>
-                    <button hidden id="sellCupcakes" onclick="sellCupcakes()">Sell Cupcakes</button>
-                </tr>
-            </tbody>
-        </table>
-        <p></p>
-        <table id="workers">
-            <tbody>
-                <tr id="baristasButtonRow">
-                    <td style="display:none;" id="baristasText"> Brew Baristas turn beans into coffee.</td>
-                    <button hidden id="brewBaristaButton" onclick="buyBrewBarista()">Brew Barista [10 credits]</button>
-                    <button hidden id="sellBaristaButton" onclick="buySellBarista()">Sell Barista [25 credits]</button>
-                    <button hidden id="largerStoreButton" onclick="largerStore()">Larger Store 1 [100 credits]</button>
-                </tr>
-            </tbody>
-        </table>
         <p></p>
         <p></p>
         <table id="contracts">

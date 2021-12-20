@@ -2,65 +2,77 @@ let brewBaristas = 0;
 let brewEfficacy = .1
 let sellBaristas = 0;
 let sellEfficacy = .1
-let baristaMax = 1;
+let baristas = 0;
+let baristasMax = 3;
 let taughtBaristas = false;
 let cps = 0;
 
-function buyBrewBarista(){
-    var cost = Math.floor(10 * (brewBaristas + 1));                             //formula for currrent price of Baristas
-    if(credits >= cost && brewBaristas < baristaMax){
+
+function buyBarista(){
+    var cost = Math.floor(10 * (baristas + 1));                             //formula for currrent price of Baristas
+    if(credits >= cost && baristas < baristasMax){
         document.getElementById("help").hidden = false;
-        brewBaristas++;
+        baristas++;
         increaseCredits(-cost);
-        document.getElementById("brewBaristas").innerHTML = "Brew Baristas: " + brewBaristas + "/" + baristaMax;
-        document.getElementById("brewBaristaButton").innerHTML = "Brew Barista (" + Math.floor(10 * (brewBaristas + 1)) + " credits)";
+        document.getElementById("totalBaristas").innerHTML = "Baristas: " + baristas + "/" + baristasMax;
+        document.getElementById("buyBarista").innerHTML = "Buy Barista: " + Math.floor(10 * (baristas + 1)) + " credits";
     }
 }
 
-function buySellBarista(){
-    var cost = Math.floor(25 * (sellBaristas + 1));                             //formula for currrent price of Baristas
-    if(credits >= cost && sellBaristas < baristaMax-1){
-        document.getElementById("help").hidden = false;
+function allocateSell(){
+    if(sellBaristas + brewBaristas < baristas){
         sellBaristas++;
-        increaseCredits(-cost);
-        document.getElementById("sellBaristas").innerHTML = "Sell Baristas: " + sellBaristas + "/" + (baristaMax-1);
-        document.getElementById("sellBaristaButton").innerHTML = "Sell Barista (" + Math.floor(25 * (sellBaristas + 1)) + " credits)";
+        document.getElementById("sellBaristas").innerHTML = "Sell Baristas: " + sellBaristas;
+    }
+}
+function removeSell(){
+    if(sellBaristas > 0){
+        sellBaristas--;
+        document.getElementById("sellBaristas").innerHTML = "Sell Baristas: " + sellBaristas;
     }
 }
 
-function updateCPS(){
-    //cps = currentBaristas * (1 + (beansLevel * .1));
-    //console.log(beansLevel);
-    //document.getElementById("cps").innerHTML = "Credits Per Second: " + cps;
+function allocateBrew(){
+    if(sellBaristas + brewBaristas < baristas){
+        brewBaristas++;
+        document.getElementById("brewBaristas").innerHTML = "Brew Baristas: " + brewBaristas;
+    }
+}
+function removeBrew(){
+    if(brewBaristas > 0){
+        brewBaristas--;
+        document.getElementById("brewBaristas").innerHTML = "Brew Baristas: " + brewBaristas;
+    }
 }
 
-function buildingsTick(){   //tick every .1 seconds
-    if(brewBaristas > 0){//brew baristas brew .1 beans into .1 coffee per second
-        if((brewBaristas * brewEfficacy) <= coffeeBeans){
-            increaseBeans(-(brewBaristas * brewEfficacy));
-            increaseCoffee(brewBaristas * brewEfficacy);
+
+function baristasTick(){   //tick every .1 seconds
+    for(var i = 0; i < sellBaristas; i++){
+        var food = snacks[Math.floor(Math.random()*snacks.length)];
+        var sold = 0;
+        if(coffee > 0){
+            sellCoffee(1);
+            sold++;
         }
-        else{
-            increaseCoffee(coffeeBeans);
-            increaseBeans(-coffeeBeans);
+        if(food == "cupcakes" && cupcakes > 0){
+            sellCupcakes(1);
+            sold++;
+        }
+        else if(food == "croissants" && croissants > 0){
+            sellCroissants(1);
+            sold++;
+        }
+        else if(food == "coffeeCake" && coffeeCake > 0){
+            sellCoffeeCake(1);
+            sold++;
+        }
+        if(sold != 0){
+            increaseCredits(-1);
         }
     }
-    if(sellBaristas > 0){//sell baristas sell .1 coffees into .5 credits per second
-        if((sellBaristas * .1) <= cupcakes && taughtBaristas){
-            increaseCupcakes(-(sellBaristas * .1));
-            increaseCredits(sellBaristas * .1 * 10);
-        }
-        else if(cupcakes > 0 && taughtBaristas){
-            increaseCredits(cupcakes * 10);
-            increaseCupcakes(-cupcakes);
-        }
-        else if((sellBaristas * sellEfficacy) <= coffee){
-            increaseCoffee(-(sellBaristas * sellEfficacy));
-            increaseCredits(sellBaristas * sellEfficacy * 5);
-        }
-        else{
-            increaseCredits(coffee * 5);
-            increaseCoffee(-coffee);
+    for(var i = 0; i < brewBaristas; i++){
+        if(coffeeBeans > 0){
+            makeCoffee(1);
         }
     }
 }
