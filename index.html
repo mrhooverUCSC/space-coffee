@@ -17,12 +17,71 @@
     <img id="help" hidden src="assets/imgs/HoloHelpWanted.png" class="help" width=200px>
     <img id="contract" hidden src="assets/imgs/Coffee_Beans_Holo.png" class="contract" width=300px>
     <div class="selectors" id="selectors">
-        <div id="selectCafe" class="paneSelector selected" onclick="paneSelect('cafe')">Cafe</div>
-        <div id="selectManagement" class="paneSelector" onclick="paneSelect('management')">Management</div>
-        <div id="selectContracts" class="paneSelector" onclick="paneSelect('contracts')">Contracts</div>
+        <div id="selectCafe" class="paneSelector selected" onclick="paneChange('cafe')">Cafe</div>
+        <div id="selectManagement" class="paneSelector" onclick="paneChange('management')">Management</div>
+        <div id="selectContracts" class="paneSelector" onclick="paneChange('contracts')">Contracts</div>
+        <div id="selectRecipes" class="paneSelector" onclick="paneChange('recipes')">Recipes</div>
         <div style="clear:both;"></div>
     </div>
-
+    <div class="content" style="display:block" id="cafePane">
+        <table style="width:650px">
+            <tbody>
+                <tr id="creditsRow">
+                    <td id="credits">Credits: 10</td>
+                </tr>
+                <tr><td>Ingredients</td></tr>
+                <tr id="ingredientsRow">
+                    <td id="coffeeBeans">Coffee Beans: 0</td>
+                    <td id="flour">Flour: 0</td>
+                    <td id="butter">Butter: 0</td>
+                    <td id="sugar">Sugar: 0</td>
+                    <td id="chocolate">Chocolate: 0</td>
+                    <td id="eggs">Eggs: 0</td>
+                </tr>
+                <tr><td>Products</td></tr>
+                <tr id="productsRow">
+                    <td id="coffee">Coffee: 0</td>
+                    <td id="cupcakes">Cupcakes: 0</td>
+                    <td id="croissants">Croissants: 0</td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <tbody>
+                <tr><td>Actions</td></tr>
+                <tr id="coffeeButtonsRow">
+                    <td><button id="buyBeans" onclick="buyBeans()">Buy Beans</button></td>
+                    <td><button id="makeCoffee" onclick="makeCoffee()">Make Coffee</button></td>
+                    <td><button id="sellCoffee" onclick="sellCoffee()">Sell Coffee</button></td>
+                </tr>
+                <tr id="ingedirentButtonsRow">
+                    <td><button id="buyFlour" onclick="buyFlour()">Buy Flour</button></td>
+                    <td><button id="buyButter" onclick="buyButter()">Buy Butter</button></td>
+                    <td><button id="buySugar" onclick="buySugar()">Buy Sugar</button></td>
+                    <td><button id="buyChocolate" onclick="buyChocolate()">Buy Chocolate</button></td>
+                    <td><button id="buyEggs" onclick="buyEggs()">Buy Eggs</button></td>
+                </tr>
+                <tr id="makeProductsRow">
+                    <td><button id="makeCupcakes" onclick="makeCupcakes()">Make Cupcakes</button></td>
+                    <td><button id="makeCroissant" onclick="makeCroissant()">Make Croissant</button></td>
+                </tr>
+                <tr id="sellProductsRow">
+                    <td><button id="sellCupcakes" onclick="sellCupcakes()">Sell Cupcakes</button></td>
+                    <td><button id="sellCroissants" onclick="sellCroissants()">Sell Croissants</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="content" style="display:none" id="managementPane">
+        <p style="color:white">1</p>
+    </div>
+    <div class="content" style="display:none"  id="contractPane">
+        <p style="color:white">2</p>
+    </div>
+    <div class="content" style="display:none"  id="recipesPane">
+        <p style="color:white">Cupcake Recipe: 2 Flour, 2 Eggs, 1 Chocolate</p>
+        <p style="color:white">Croissant Recipe: 2 Flour, 2 Butter, 1 Sugar</p>
+    </div>
 <!---
     <div class="centered">
         <table id="values">
