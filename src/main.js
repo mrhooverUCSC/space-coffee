@@ -78,7 +78,7 @@ function buyEggs(){
     }
 }
 function makeCupcakes(){
-    if(flour >= 2, eggs >= 2, chocolate >= 1){
+    if(flour >= 2 && eggs >= 2 && chocolate >= 1){
         increaseFlour(-2);
         increaseEggs(-2);
         increaseChocolate(-1);
@@ -86,7 +86,7 @@ function makeCupcakes(){
     }
 }
 function makeCroissant(){
-    if(flour >= 2, butter >= 2, sugar >= 1){
+    if(flour >= 2 && butter >= 2 && sugar >= 1){
         increaseFlour(-2);
         increaseButter(-2);
         increaseSugar(-1);
