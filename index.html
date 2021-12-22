@@ -6,7 +6,6 @@
     <title>Space Coffee</title>
 	<link rel="stylesheet" type="text/css" href="style.css" />
     <canvas id="parallax"></canvas>
-    <script src="./src/parallax.js"></script>
 
     <link rel="stylesheet" href="./style.css" />
     <!-- ENDS -->
@@ -20,7 +19,7 @@
         <div id="selectCafe" class="paneSelector selected" onclick="paneChange('cafe')">Cafe</div>
         <div id="selectManagement" class="paneSelector" onclick="paneChange('management')">Management</div>
         <div id="selectContracts" class="paneSelector" onclick="paneChange('contracts')">Contracts</div>
-        <div id="selectRecipes" class="paneSelector" onclick="paneChange('recipes')">Recipes</div>
+        <div id="selectRecipes" class="paneSelector" onclick="paneChange('recipes')">Info</div>
         <div style="clear:both;"></div>
     </div>
     <div class="content" style="display:block" id="cafePane">
@@ -82,7 +81,7 @@
         <table id="workers" style="width:800px">
             <tbody>
                 <tr id="baristasHireRow">
-                    <td> Baristas have an initial cost and a 1 credit wage paid every time they perform an action.</td>
+                    <td> Baristas have an initial cost and are paid 1-credit wage paid every time they perform an action.</td>
                     <td><p id="totalBaristas">Baristas: 0/3</p></td>
                     <td><button id="buyBarista" onclick="buyBarista()">Hire Barista: 10 credits</button></td>
                 </tr>
@@ -98,6 +97,12 @@
                     <td><button id="allocateBrew" onclick="allocateBrew()">Add Brew Barisata</button></td>
                     <td><button id="removeBrew" onclick="removeBrew()">Remove Brew Barista</button></td>
                 </tr>
+                <tr id="bakeBaristasRow">
+                    <td> Bake Baristas turn ingredients into pastries.</td>
+                    <td><p id="bakeBaristas">Bake Baristas: 0</p></td>
+                    <td><button id="allocateBake" onclick="allocateBake()">Add Bake Barisata</button></td>
+                    <td><button id="removeBake" onclick="removeBake()">Remove Bake Barista</button></td>
+                </tr>
             </tbody>
         </table>
     </div>
@@ -105,10 +110,13 @@
         <p style="color:white">2</p>
     </div>
     <div class="content" style="display:none"  id="recipesPane">
-        <p style="color:white">Cupcake Recipe: 2 Flour, 2 Eggs, 1 Chocolate</p>
-        <p style="color:white">Croissant Recipe: 2 Flour, 2 Butter, 1 Sugar</p>
-        <p style="color:white">Coffee Cake Recipe: 2 Flour, 1 Cinnamon, 1 Egg, 1 Sugar</p>
-        <p style="color:white">Coffee Cake</p>
+        <div style="color:white">Cupcake Recipe: 2 Flour, 2 Eggs, 1 Chocolate</div>
+        <div style="color:white">Croissant Recipe: 2 Flour, 2 Butter, 1 Sugar</div>
+        <div style="color:white">Coffee Cake Recipe: 2 Flour, 1 Cinnamon, 1 Egg, 1 Sugar</div>
+        <div style="color:white">Coffee Cake</div>
+        <p></p>
+        <div style="color:white">Bake Baristas randomly create a pastry out of the possible creations.</div>
+        <div style="color:white">Sell Baristas sell to customers, who decide to buy a random pastry or none.</div>
     </div>
 <!---
     <div class="centered">
@@ -136,16 +144,12 @@
         </table>
     </div>
 -->
+    <script src="./src/parallax.js"></script>
     <script src="./src/upgrades.js"></script>
     <script src="./src/workers.js"></script>
     <script src="./src/contracts.js"></script>
     <script src="./src/main.js"></script>
     <!--<button id="buttonMaker" onclick="makeButton()">Button Maker</button>-->
-
-    <!-- Jake's additions STARTS -->
-    <!---<canvas id="parallax"></canvas>
-    <script src="./src/parallax.js"></script>-->
-    <!-- ENDS -->
 
 </body>
 </html>

@@ -1,18 +1,19 @@
-let credits = 10;
+let credits = 100;
 let debt = 0;
 let coffeeBeans = 0;
 let coffee = 10;
-let flour = 0;
-let butter = 0;
-let sugar = 0;
-let chocolate = 0;
-let eggs = 0;
-let cinnamon = 0;
+let flour = 10;
+let butter = 10;
+let sugar = 10;
+let chocolate = 10;
+let eggs = 10;
+let cinnamon = 10;
 let cupcakes = 0;
 let croissants = 0;
 let coffeeCake = 0;
 let timer = 0;
-let snacks = Array("cupcakes", "croissants", "coffeeCake", "none");
+let buySnacks = Array("cupcakes", "croissants", "coffeeCake", "none");
+let snacks = Array("cupcakes", "croissants", "coffeeCake");
 
 function borrowCredits(){
     increaseCredits(1);
@@ -205,9 +206,8 @@ function paneChange(name){
         document.getElementById("selectRecipes").className = "paneSelector selected";
     }
 }
-
+/*
 window.setInterval(function(){ //tick every .1 seconds
-    /*
     if(credits==0 && document.getElementById("cafePane").style.display == "block"){
         document.getElementById("clicker").hidden = false;
     }
@@ -217,12 +217,6 @@ window.setInterval(function(){ //tick every .1 seconds
     buildingsTick();
     contractsTick();
     upgradesCheck();
-    */
-    timer++;
-    if(timer % 10 == 0){
-        baristasTick();
-    }
-    if(timer >= 60){
-        timer = 0;
-    }
 }, 100);
+    */
+
