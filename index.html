@@ -98,7 +98,7 @@
                     <td><button id="allocateBrew" onclick="allocateBrew()">Add Brew Barisata</button></td>
                     <td><button id="removeBrew" onclick="removeBrew()">Remove Brew Barista</button></td>
                 </tr>
-                <tr id="bakeBaristasRow">
+                <tr hidden id="bakeBaristasRow">
                     <td> Bake Baristas turn ingredients into pastries.</td>
                     <td><p id="bakeBaristas">Bake Baristas: 0</p></td>
                     <td><button id="allocateBake" onclick="allocateBake()">Add Bake Barisata</button></td>
@@ -129,6 +129,14 @@
                 <tr id="workersUpgrade">
                     <td><button id="enableWorkers" onclick="enableWorkers()">Enable Workers: 100 Credits</button></td>
                     <td>Enables the Workers tab, allowing for processing and selling of products.</td>
+                </tr>
+                <tr hidden id="bakersUpgrade">
+                    <td><button id="enableBakers" onclick="enableBakers()">Enable Bakers: 150 Credits</button></td>
+                    <td>Unlocks Bakers, who make patries out of ingredients.</td>
+                </tr>
+                <tr hidden id="storeUpgrade">
+                    <td><button id="upgradeStore" onclick="upgradeStore()">Upgrade Store: 250 Credits</button></td>
+                    <td>Increases the size of your store, allowing for 2 more workers.</td>
                 </tr>
                 <tr id="contractUpgrade">
                     <td><button id="enableContracts" onclick="enableContracts()">Enable Contracts: 250 credits</button></td>

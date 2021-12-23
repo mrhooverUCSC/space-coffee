@@ -5,18 +5,17 @@ let sellTimeout = 0;
 let bakeBaristas = 0;
 let bakeTimeout = 0;
 let baristas = 0;
-let baristasMax = 3;
 let taughtBaristas = false;
 let cps = 0;
 
 
 function buyBarista(){
     var cost = Math.floor(10 * (baristas + 1));                             //formula for currrent price of Baristas
-    if(credits >= cost && baristas < baristasMax){
+    if(credits >= cost && baristas < (3 + (2 * storeSize))){
         document.getElementById("help").hidden = false;
         baristas++;
         increaseCredits(-cost);
-        document.getElementById("totalBaristas").innerHTML = "Baristas: " + baristas + "/" + baristasMax;
+        document.getElementById("totalBaristas").innerHTML = "Baristas: " + baristas + "/" + (3 + (2 * storeSize));
         document.getElementById("buyBarista").innerHTML = "Buy Barista: " + Math.floor(10 * (baristas + 1)) + " credits";
     }
 }

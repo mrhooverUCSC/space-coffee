@@ -1,10 +1,34 @@
+let storeSize = 0;
+
 function enableWorkers(){
     if(credits >= 100){
         increaseCredits(-100);
         document.getElementById("selectManagement").hidden = false;
         document.getElementById("workersUpgrade").hidden = true;
+        document.getElementById("bakersUpgrade").hidden = false;
     }
 }
+
+function enableBakers(){
+    if(credits >= 150){
+        increaseCredits(-150);
+        document.getElementById("bakeBaristasRow").hidden = false;
+        document.getElementById("bakersUpgrade").hidden = true;
+        document.getElementById("storeUpgrade").hidden = false;
+    }
+}
+
+function upgradeStore(){
+    var cost = Math.floor(250 * Math.pow(storeSize + 1, 1.4));
+    if(credits >= cost){
+        increaseCredits(-cost);
+        storeSize++;
+        document.getElementById("upgradeStore").innerHTML = "Upgrade Store: " + Math.floor(250 * Math.pow(storeSize + 1, 1.4)) + " Credits";
+        document.getElementById("totalBaristas").innerHTML = "Baristas: " + baristas + "/" + (3 + (2 * storeSize));
+        console.log(storeSize);
+    }
+}
+
 
 function enableContracts(){
     if(credits >= 250){
@@ -13,6 +37,7 @@ function enableContracts(){
         document.getElementById("contractUpgrade").hidden = true;
     }
 }
+
 
 /*
 let baristasRevealed = false;
