@@ -1,40 +1,51 @@
-let beansContractCurrently = false;
-let currentContractUpgrade = 0;
-let contractRate = 0.05;
-let amountToUpgrade = 0.03;
+let contract1 = false;
+let contract1Timeout;
+let contract2 = false;
+let contract2Timeout;
 
-function beansContract(){
-    var contractCost = Math.floor(500 + (100 * (currentContractUpgrade)));  
-    if(credits >= contractCost){
-        document.getElementById("contract").hidden = false;
-        document.getElementById("beansContractToggle").hidden = false;
-        document.getElementById("beansContractText").innerHTML = "Beans Contract currently turns " + Math.floor(contractRate * 100) + "% of credits into beans every 15 seconds)";
-        increaseCredits(-contractCost);
-        currentContractUpgrade++;
-        contractRate = contractRate + amountToUpgrade;
-        amountToUpgrade = amountToUpgrade * 0.85;
-        contractCost = Math.floor(500 + (100 * (currentContractUpgrade)));
-        document.getElementById("beansContract").innerHTML = "Upgrade Beans Contract (" + contractCost + " credits)";
+function toggleContract1(){
+    if(!contract1 && credits >= 100){
+        increaseCreidts(-100);
+        contract1Tick();
+        contract1 = true;
+        document.getElementById("toggleContract1").innerHTML = "Disable";
+    }
+    else if(contract1){
+        window.clearTimeout(contract1Timeout);
+        contract1 = false;
+        document.getElementById("toggleContract1").innerHTML = "Enable: 100 credits";
     }
 }
-
-function toggleBeansContract(){
-    beansContractCurrently = !beansContractCurrently;
-    if(beansContractCurrently){
-        document.getElementById("beansContractToggle").innerHTML = "Beans Contract: Currently On";
+function contract1Tick(){
+    if(credits >= 15){
+        increaseBeans(20);
+        increaseCredits(-15);
     }
-    else{
-        document.getElementById("beansContractToggle").innerHTML = "Beans Contract: Currently Off";
-    }
+    contract1Timeout = setTimeout(() => {contract1Tick();}, 60000);
 }
 
-function contractsTick(){
-    /*timer += .1; 
-    if(timer >= 15){
-        if(beansContractCurrently){
-            increaseBeans(Math.floor(contractRate * credits));
-            increaseCredits(-Math.floor(contractRate * credits));
-        }
-        timer = 0;
-    }*/
+function toggleContract2(){
+    if(!contract2 && credits >= 250){
+        increaseCreidts(-250);
+        contract2Tick();
+        contract2 = true;
+        document.getElementById("toggleContract2").innerHTML = "Disable";
+    }
+    else if(contract2){
+        window.clearTimeout(contract2Timeout);
+        contract2 = false;
+        document.getElementById("toggleContract2").innerHTML = "Enable: 100 credits";
+    }
+}
+function contract2Tick(){
+    if(credits >= 25){
+        increaseFlour(5);
+        increaseChocolate(5);
+        increaseCinnamon(5);
+        increaseSugar(5);
+        increaseEggs(5);
+        increaseButter(5);
+        increaseCredits(-25);
+    }
+    contract2Timeout = setTimeout(() => {contract2Tick();}, 60000);
 }

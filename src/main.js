@@ -1,4 +1,4 @@
-let credits = 100;
+let credits = 300;
 let debt = 0;
 let coffeeBeans = 0;
 let coffee = 10;
@@ -169,40 +169,60 @@ function paneChange(name){
         document.getElementById("cafePane").style.display = "block";
         document.getElementById("managementPane").style.display = "none";
         document.getElementById("contractPane").style.display = "none";
+        document.getElementById("upgradesPane").style.display = "none";
         document.getElementById("recipesPane").style.display = "none";
         document.getElementById("selectCafe").className = "paneSelector selected";
         document.getElementById("selectManagement").className = "paneSelector";
         document.getElementById("selectContracts").className = "paneSelector";
+        document.getElementById("selectUpgrades").className = "paneSelector";
         document.getElementById("selectRecipes").className = "paneSelector";
     }
     else if(name == 'management'){
         document.getElementById("cafePane").style.display = "none";
         document.getElementById("managementPane").style.display = "block";
         document.getElementById("contractPane").style.display = "none";
+        document.getElementById("upgradesPane").style.display = "none";
         document.getElementById("recipesPane").style.display = "none";
         document.getElementById("selectCafe").className = "paneSelector";
         document.getElementById("selectManagement").className = "paneSelector selected";
         document.getElementById("selectContracts").className = "paneSelector";
+        document.getElementById("selectUpgrades").className = "paneSelector";
         document.getElementById("selectRecipes").className = "paneSelector";
     }
     else if(name == 'contracts'){
         document.getElementById("cafePane").style.display = "none";
         document.getElementById("managementPane").style.display = "none";
         document.getElementById("contractPane").style.display = "block";
+        document.getElementById("upgradesPane").style.display = "none";
         document.getElementById("recipesPane").style.display = "none";
         document.getElementById("selectCafe").className = "paneSelector";
         document.getElementById("selectManagement").className = "paneSelector";
         document.getElementById("selectContracts").className = "paneSelector selected";
+        document.getElementById("selectUpgrades").className = "paneSelector";
+        document.getElementById("selectRecipes").className = "paneSelector";
+    }
+    else if(name == 'upgrades'){
+        document.getElementById("cafePane").style.display = "none";
+        document.getElementById("managementPane").style.display = "none";
+        document.getElementById("contractPane").style.display = "none";
+        document.getElementById("upgradesPane").style.display = "block";
+        document.getElementById("recipesPane").style.display = "none";
+        document.getElementById("selectCafe").className = "paneSelector";
+        document.getElementById("selectManagement").className = "paneSelector";
+        document.getElementById("selectContracts").className = "paneSelector";
+        document.getElementById("selectUpgrades").className = "paneSelector selected";
         document.getElementById("selectRecipes").className = "paneSelector";
     }
     else{
         document.getElementById("cafePane").style.display = "none";
         document.getElementById("managementPane").style.display = "none";
         document.getElementById("contractPane").style.display = "none";
+        document.getElementById("upgradesPane").style.display = "none";
         document.getElementById("recipesPane").style.display = "block";
         document.getElementById("selectCafe").className = "paneSelector";
         document.getElementById("selectManagement").className = "paneSelector";
         document.getElementById("selectContracts").className = "paneSelector";
+        document.getElementById("selectUpgrades").className = "paneSelector";
         document.getElementById("selectRecipes").className = "paneSelector selected";
     }
 }

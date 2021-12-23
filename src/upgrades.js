@@ -1,3 +1,20 @@
+function enableWorkers(){
+    if(credits >= 100){
+        increaseCredits(-100);
+        document.getElementById("selectManagement").hidden = false;
+        document.getElementById("workersUpgrade").hidden = true;
+    }
+}
+
+function enableContracts(){
+    if(credits >= 250){
+        increaseCredits(-250);
+        document.getElementById("selectContracts").hidden = false;
+        document.getElementById("contractUpgrade").hidden = true;
+    }
+}
+
+/*
 let baristasRevealed = false;
 let beansContractRevealed = false;
 let expandedMenuRevealed = false;
@@ -70,3 +87,4 @@ function upgradesCheck(){ //if the requirement has been met, add a new upgrade o
     //    betterBeansRevealed = true;
     //}
 }
+*/
