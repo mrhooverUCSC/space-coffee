@@ -5,7 +5,7 @@ let contract2Timeout;
 
 function toggleContract1(){
     if(!contract1 && credits >= 100){
-        increaseCreidts(-100);
+        increaseCredits(-100);
         contract1Tick();
         contract1 = true;
         document.getElementById("toggleContract1").innerHTML = "Disable";
@@ -26,7 +26,7 @@ function contract1Tick(){
 
 function toggleContract2(){
     if(!contract2 && credits >= 250){
-        increaseCreidts(-250);
+        increaseCredits(-250);
         contract2Tick();
         contract2 = true;
         document.getElementById("toggleContract2").innerHTML = "Disable";
