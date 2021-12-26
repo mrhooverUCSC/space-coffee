@@ -1,4 +1,4 @@
-let credits = 0;
+let credits = 10;
 let debt = 0;
 let coffeeBeans = 0;
 let coffee = 0;
@@ -114,8 +114,18 @@ function makeButton(){ //example function
     }
 }
 
+function borrow(){
+    increaseCredits(10);
+    document.getElementById("borrow").hidden = true;
+}
+
 function increaseCredits(increase){
     credits += increase;
+    console.log(credits);
+    if(credits <= 0 && coffeeBeans <= 0 && coffee <= 0 && cupcakes <= 0){
+        console.log("hi");
+        document.getElementById("borrow").hidden = false;
+    }
     document.getElementById("credits").innerHTML = "Credits: " + Math.floor(credits);
 }
 function increaseBeans(increase){

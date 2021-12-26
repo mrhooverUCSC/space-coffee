@@ -51,6 +51,9 @@
         <table>
             <tbody>
                 <tr><td>Actions</td></tr>
+                <tr id="borrowRow">
+                    <td><button id="borrow" hidden onclick="borrow()">Beg For Money</button></td>
+                </tr>
                 <tr id="buyRow">
                     <td>Buy:</td>
                     <td><button id="buyBeans" onclick="buyIngredient('beans')">Beans</button></td>
@@ -127,24 +130,23 @@
         <table id="upgrades">
             <tbody>
                 <tr id="workersUpgrade">
-                    <td><button id="enableWorkers" onclick="enableWorkers()">Enable Workers: 100 Credits</button></td>
+                    <td style="width:155px"><button id="enableWorkers" onclick="enableWorkers()">Enable Workers: 100 Credits</button></td>
                     <td>Enables the Workers tab, allowing for processing and selling of products.</td>
                 </tr>
                 <tr hidden id="bakersUpgrade">
-                    <td><button id="enableBakers" onclick="enableBakers()">Enable Bakers: 150 Credits</button></td>
+                    <td style="width:155px"><button id="enableBakers" onclick="enableBakers()">Enable Bakers: 150 Credits</button></td>
                     <td>Unlocks Bakers, who make patries out of ingredients.</td>
                 </tr>
                 <tr hidden id="storeUpgrade">
-                    <td><button id="upgradeStore" onclick="upgradeStore()">Upgrade Store: 250 Credits</button></td>
+                    <td style="width:155px"><button id="upgradeStore" onclick="upgradeStore()">Upgrade Store: 250 Credits</button></td>
                     <td>Increases the size of your store, allowing for 2 more workers.</td>
                 </tr>
                 <tr id="contractUpgrade">
-                    <td><button id="enableContracts" onclick="enableContracts()">Enable Contracts: 250 credits</button></td>
+                    <td style="width:155px"><button id="enableContracts" onclick="enableContracts()">Enable Contracts: 250 credits</button></td>
                     <td>Enables the Contracts tab, allowing for consistent ordering of ingredients.</td>
                 </tr>
             </tbody>
         </table>
-        <div style="color:white">3</div>
     </div>
     <div class="content" style="display:none"  id="recipesPane">
         <div style="color:white">Cupcake Recipe: 2 Flour, 2 Eggs, 1 Chocolate</div>
